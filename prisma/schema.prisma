@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int      @id @default(autoincrement())
+  username String   @unique
+  cities   City[]   @relation("userCities")
+}
+
+model City {
+  id        Int      @id @default(autoincrement())
+  name      String
+  weathers  Weather[] @relation("cityWeather")
+  users     User[]    @relation("userCities")
+}
+
+model Weather {
+  id          Int      @id @default(autoincrement())
+  city        City     @relation("cityWeather", fields: [cityId], references: [id])
+  cityId      Int
+  temperature Float
+  humidity    Float
+  windSpeed   Float
+}
