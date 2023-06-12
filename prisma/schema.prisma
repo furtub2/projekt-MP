@@ -11,23 +11,18 @@ datasource db {
 }
 
 model User {
-  id       Int      @id @default(autoincrement())
-  username String   @unique
-  cities   City[]   @relation("userCities")
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  favorites City[]   @relation("FavoriteCity", references: [id])
 }
 
 model City {
   id        Int      @id @default(autoincrement())
   name      String
-  weathers  Weather[] @relation("cityWeather")
+  longitude String
+  atitude   String
+  country   String
   users     User[]    @relation("userCities")
-}
-
-model Weather {
-  id          Int      @id @default(autoincrement())
-  city        City     @relation("cityWeather", fields: [cityId], references: [id])
-  cityId      Int
-  temperature Float
-  humidity    Float
-  windSpeed   Float
 }
