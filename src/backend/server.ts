@@ -4,12 +4,14 @@ import cors from 'cors'
 import limit from 'express-rate-limit'
 import router from './routes'
 import { CorsOptions } from 'cors'
+
 export type TServerConfig = {
     port: number
     corsOptions: CorsOptions
     limiter: {
-time: number
-max: number }
+        time: number
+        max: number
+    }
 }
 export const startServer = ({ port, corsOptions, limiter }: TServerConfig) => {
     const app = express()

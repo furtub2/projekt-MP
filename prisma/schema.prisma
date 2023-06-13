@@ -11,18 +11,29 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
+  id        String         @id
   name      String
-  email     String   @unique
+  email     String         @unique
   password  String
-  favorites City[]   @relation("FavoriteCity", references: [id])
+  favorites FavoriteCity[]
 }
 
 model City {
-  id        Int      @id @default(autoincrement())
+  id        Int            @id @default(autoincrement())
   name      String
   longitude String
   atitude   String
   country   String
-  users     User[]    @relation("userCities")
+  favorites FavoriteCity[]
+}
+
+model FavoriteCity {
+  id     Int    @id @default(autoincrement())
+  userId String
+  cityId Int
+
+  user User @relation(fields: [userId], references: [id])
+  city City @relation(fields: [cityId], references: [id])
+
+  @@unique([userId, cityId])
 }
