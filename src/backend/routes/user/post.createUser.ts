@@ -37,31 +37,3 @@ export default {
             },
         }),
 } as TRoute
-
-/*export const postUser: RequestHandler = async (req, res) => {
-    const { email, name, password } = req.body
-    const hash = crypto.createHmac('sha512', SALT)
-    hash.update(password)
-    const passwordHash = hash.digest('hex')
-    try {
-        const createdUser = await prisma.user.create({
-            data: {
-                id: v4(),
-                name,
-                email,
-                password: passwordHash,
-                favorites: { create: [] },
-            },
-        })
-        res.status(StatusCodes.CREATED)
-        res.send({ ...createdUser, password: '***' })
-    } catch (err) {
-        console.log(err)
-        console.error(err)
-        const response = checkPrismaError(err, {
-            uniqueConstraintFailed: 'Email must be unique.',
-        })
-        res.status(response.status)
-        res.send(response.message)
-    }
-}*/
