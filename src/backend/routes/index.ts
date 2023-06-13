@@ -1,5 +1,6 @@
 import express from 'express'
 import postUser from './user/post.createUser'
+import loginUser from "./user/login.user";
 
 const router = express.Router()
 
@@ -12,7 +13,7 @@ router.use((req, res, next) => {
 router.get('/', (req, res) => {
     res.send('Example home page')
 })
-const apiRoutes = [postUser]
+const apiRoutes = [postUser, loginUser]
 apiRoutes.forEach((route) =>
     router[route.method](route.path, route.validators, route.handler),
 )

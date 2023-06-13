@@ -1,8 +1,6 @@
 import { Request, Response } from 'express'
 import { v4 } from 'uuid'
-import crypto from 'crypto'
 import { prisma } from '../../database'
-import { checkPrismaError } from '../../utils/prisma.utils'
 import { StatusCodes } from 'http-status-codes'
 import { TRoute } from '../types'
 import { body } from 'express-validator'
