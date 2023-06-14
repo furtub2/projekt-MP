@@ -20,3 +20,4 @@ export const getCitiesByName = async (cityName:string) =>{
 
     return locations;
 }
+
