@@ -1,5 +1,6 @@
 import express from 'express'
-import { getStatus } from './status/get.status'
+import {getStatus } from './status/get.status'
+import { getCities } from './cityData/get.city'
 
 const router = express.Router()
 // middleware
@@ -12,5 +13,7 @@ router.get('/', (req, res) => {
 })
 // api route
 router.get('/api/status', getStatus)
+// api route
+router.get('/api/city',getCities)
 
 export default router
