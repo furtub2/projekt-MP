@@ -1,9 +1,10 @@
 import { RequestHandler } from "express";
 import { getCitiesByName } from "../../externalData/dataFromApi";
-export const getCity: RequestHandler = (req,res) =>{
+export const getCities: RequestHandler = (req,res) =>{
+    const {name} = req.body;
     try{
         (async () =>{
-            const response = await getCitiesByName('Warsaw');
+            const response = await getCitiesByName(name);
             res.send(response);
         })()
     }catch(err){
