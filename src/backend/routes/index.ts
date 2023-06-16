@@ -3,6 +3,7 @@ import {getStatus } from './status/get.status'
 import { getCities } from './city/get.cities'
 import { getCurrentWeather } from './weather/get.currentWeather'
 import { getWeatherForDaysFromSelectedCity } from './weather/get.weatherForDays'
+import { getCurrentWeatherForSelectedCities } from './weather/get.currentWeatherForSelectedCities'
 
 
 const router = express.Router()
@@ -22,6 +23,9 @@ router.get('/api/cities', getCities)
 router.get('/api/current_weather',getCurrentWeather)
 // get weather selected city for several days
 router.get('/api/weather_for_city',getWeatherForDaysFromSelectedCity)
+// get weather selected city for several days
+router.get('/api/weather_for_selected_cities',getCurrentWeatherForSelectedCities)
+
 
 
 export default router

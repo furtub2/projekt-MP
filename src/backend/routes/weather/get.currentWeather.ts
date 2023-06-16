@@ -1,9 +1,7 @@
 import { RequestHandler } from "express";
 import { getCurrentWeatherFromSelectedCity } from "../../externalData/dataFromApiWeather";
+import { LATITUDE_REGEX, LONGITUDE_REGEX } from "../../validations/regexExpression";
 
-
-const LONGITUDE_REGEX = /^-?((180\.0{0,6})|(((1[0-7]\d)|([1-9]?\d))(\.\d{0,6})?))$/;
-const LATITUDE_REGEX = /^-?((90\.0{0,6})|(([1-8]?\d)(\.\d{0,6})?))$/;
 
 export const getCurrentWeather: RequestHandler = (req,res) =>{
     try{

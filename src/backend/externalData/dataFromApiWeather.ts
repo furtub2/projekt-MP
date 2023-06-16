@@ -1,3 +1,4 @@
+import { AxiosResponse } from "axios";
 import axiosWeather from "../api/axiosWeather";
 import { getUrl } from "../api/urlForApi";
 
@@ -17,6 +18,16 @@ export const getWeatherForSeveralDaysForSelectedCity = async (long:number,lat:nu
     return data;
 }
 
-// export const getCurrentWeatherForSelectedCities = async (listOfLongitude:number[],listOfLatitude:number[]) =>{
-//     const urlFor
-// }
+export const getCurrentWeatherSelectedCities = async (listOfLongitude:number[],listOfLatitude:number[]) =>{
+    const listOfUrl = listOfLatitude.map((lat:number,index:number) => {
+        const long = listOfLongitude[index];
+        return getUrl(lat,long);
+    })
+    try {
+        const responses: AxiosResponse[] = await Promise.all(listOfUrl.map(url => axiosWeather.get(url)));
+        const data = responses.map(response => response.data);
+        return data;
+      } catch (error) {
+        console.error(error);
+      }
+}

@@ -1,9 +1,8 @@
 import { RequestHandler } from "express";
 import { getWeatherForSeveralDaysForSelectedCity } from "../../externalData/dataFromApiWeather";
+import { DAYS_REGEX, LATITUDE_REGEX, LONGITUDE_REGEX } from "../../validations/regexExpression";
 
-const LONGITUDE_REGEX = /^-?((180\.0{0,6})|(((1[0-7]\d)|([1-9]?\d))(\.\d{0,6})?))$/;
-const LATITUDE_REGEX = /^-?((90\.0{0,6})|(([1-8]?\d)(\.\d{0,6})?))$/;
-const DAYS_REGEX = /^([1-9]|1[0-6])$/;
+
 
 export const getWeatherForDaysFromSelectedCity: RequestHandler = (req,res) =>{
     try{
@@ -22,5 +21,6 @@ export const getWeatherForDaysFromSelectedCity: RequestHandler = (req,res) =>{
 
     }catch(err){
         console.error(err);
+        res.status(400).send({ error: `${err}`}); 
     }
 }
