@@ -31,3 +31,16 @@ export const getCurrentWeatherSelectedCities = async (listOfLongitude:number[],l
         console.error(error);
       }
 }
+export const getWeatherSelectedCitiesForSevearalDays = async (listOfLongitude:number[],listOfLatitude:number[],days:number) =>{
+    const listOfUrl = listOfLatitude.map((lat:number,index:number) => {
+        const long = listOfLongitude[index];
+        return getUrl(lat,long,days);
+    })
+    try {
+        const responses: AxiosResponse[] = await Promise.all(listOfUrl.map(url => axiosWeather.get(url)));
+        const data = responses.map(response => response.data);
+        return data;
+      } catch (error) {
+        console.error(error);
+      }
+}
