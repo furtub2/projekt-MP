@@ -1,8 +1,8 @@
 import express from 'express'
 import {getStatus } from './status/get.status'
-import { getCities } from './cityData/get.cities'
-import { getCurrentWeather } from './weatherData/get.currentWeather'
-import { getWeatherForDaysFromSelectedCity } from './weatherData/get.weatherForDays'
+import { getCities } from './city/get.cities'
+import { getCurrentWeather } from './weather/get.currentWeather'
+import { getWeatherForDaysFromSelectedCity } from './weather/get.weatherForDays'
 
 
 const router = express.Router()
