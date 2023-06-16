@@ -7,12 +7,11 @@ import getUser from "./user/get.user";
 import postAddCity from "./city/post.addCity";
 import putUpdateCity from "./city/put.updateCity";
 import deleteDeleteCity from "./city/delete.deleteCity";
+import getCurrentWeather from "./weather/get.currentWeather";
 import { getCities } from './city/get.cities'
-import { getCurrentWeather } from './weather/get.currentWeather'
 import { getWeatherForDaysFromSelectedCity } from './weather/get.weatherForDays'
 import { getCurrentWeatherForSelectedCities } from './weather/get.currentWeatherForSelectedCities'
 import { getWeatherForSelectedCitiesForSeveralDays } from './weather/get.weatherForSelectedCitiesForSeveralDays'
-import postDeleteFavoriteCities from "./user/delete.deleteFavoriteCity";
 
 
 const router = express.Router()
@@ -27,22 +26,24 @@ router.get('/', (req, res) => {
     res.send('Example home page')
 })
 const apiRoutes = [
+    // user
     postUser,
     loginUser,
     postAddFavoriteCity,
     deleteDeleteFavoriteCity,
     getUser,
+    // city
     postAddCity,
     putUpdateCity,
-    deleteDeleteCity
+    deleteDeleteCity,
+    // weather
+    getCurrentWeather
 ]
 apiRoutes.forEach((route) =>
     router[route.method](route.path, route.validators, route.handler),
 )
 // get cities by name
 router.get('/api/cities', getCities)
-// get current weather for selected city
-router.get('/api/current_weather',getCurrentWeather)
 // get weather selected city for several days
 router.get('/api/weather_for_city',getWeatherForDaysFromSelectedCity)
 // get current weather selected cities
