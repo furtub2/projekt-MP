@@ -1,6 +1,9 @@
 import express from 'express'
 import postUser from './user/post.createUser'
 import loginUser from "./user/login.user"
+import postAddFavoriteCity from "./user/post.addFavoriteCity";
+import deleteDeleteFavoriteCity from "./user/delete.deleteFavoriteCity";
+import getUser from "./user/get.user";
 import postAddCity from "./city/post.addCity";
 import putUpdateCity from "./city/put.updateCity";
 import deleteDeleteCity from "./city/delete.deleteCity";
@@ -9,6 +12,7 @@ import { getCurrentWeather } from './weather/get.currentWeather'
 import { getWeatherForDaysFromSelectedCity } from './weather/get.weatherForDays'
 import { getCurrentWeatherForSelectedCities } from './weather/get.currentWeatherForSelectedCities'
 import { getWeatherForSelectedCitiesForSeveralDays } from './weather/get.weatherForSelectedCitiesForSeveralDays'
+import postDeleteFavoriteCities from "./user/delete.deleteFavoriteCity";
 
 
 const router = express.Router()
@@ -25,6 +29,9 @@ router.get('/', (req, res) => {
 const apiRoutes = [
     postUser,
     loginUser,
+    postAddFavoriteCity,
+    deleteDeleteFavoriteCity,
+    getUser,
     postAddCity,
     putUpdateCity,
     deleteDeleteCity
