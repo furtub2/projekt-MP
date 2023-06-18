@@ -49,7 +49,8 @@ router.get('/api/weather_for_city',getWeatherForDaysFromSelectedCity)
 router.get('/api/current_weather_for_selected_cities',getCurrentWeatherForSelectedCities)
 // get weather for several days selected cities
 router.get('/api/weather_for_selected_cities',getWeatherForSelectedCitiesForSeveralDays)
-
+// get weather for favorite cities
+router.get('/api/getFavoriteCitiesWeather',getFavoriteCitiesWeather)
 
 
 export default router
