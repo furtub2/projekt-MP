@@ -5,9 +5,9 @@ const CITY_NAME_REGEX = /^[a-zA-Z\s\-']{1,}$/;
 
 export const getCities: RequestHandler = async (req, res) => {
     try {
-      const { name } = req.body;
+      const name = <string>req.query.name;
 
-      if (!CITY_NAME_REGEX.test(name)) throw new Error("Invalid city name. Please try again.");
+      if (!name || !CITY_NAME_REGEX.test(name)) throw new Error("Invalid city name. Please try again.");
 
       const response = await getCitiesByName(name);
 

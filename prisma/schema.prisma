@@ -22,7 +22,7 @@ model City {
   id        Int            @id @default(autoincrement())
   name      String
   longitude String
-  atitude   String
+  latitude  String
   country   String
   favorites FavoriteCity[]
 }

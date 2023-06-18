@@ -9,8 +9,8 @@ import jwt, {Jwt, JwtPayload} from "jsonwebtoken";
 const SECRET = (process.env.TOKEN_SECRET as string) ?? 'XYZ'
 
 export default {
-    method: 'get',
-    path: '/api/user',
+    method: 'post',
+    path: '/api/user/',
     validators: [authorize],
     handler: async (req: Request, res: Response) =>
         handleRequest({

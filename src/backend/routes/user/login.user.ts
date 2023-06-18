@@ -11,7 +11,7 @@ const SALT = (process.env.PASSWORD_SALT as string) ?? 'XYZ'
 const SECRET = (process.env.TOKEN_SECRET as string) ?? 'XYZ'
 
 export default {
-    method: 'get',
+    method: 'post',
     path: '/api/login',
     validators: [body('email').isEmail(), body('password').not().isEmpty()],
     handler: async (req: Request, res: Response) =>

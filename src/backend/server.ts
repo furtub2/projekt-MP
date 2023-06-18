@@ -13,7 +13,8 @@ export type TServerConfig = {
         max: number
     }
 }
-export const startServer = ({ port, corsOptions, limiter }: TServerConfig) => {
+
+export const createServer = ({port, corsOptions, limiter }: TServerConfig) => {
     const app = express()
     app.use(helmet())
     app.use(cors(corsOptions))
@@ -21,6 +22,12 @@ export const startServer = ({ port, corsOptions, limiter }: TServerConfig) => {
     app.use(limit({ windowMs: limiter.time, max: limiter.max }))
     app.use(express.json())
     app.use(router)
+
+    return app
+}
+
+export const startServer = ({ port, corsOptions, limiter }: TServerConfig) => {
+    const app = createServer({ port, corsOptions, limiter });
     app.listen(port, () => {
         console.log(`App listening on port ${port}`)
     })
