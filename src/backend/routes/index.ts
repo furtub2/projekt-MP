@@ -15,6 +15,7 @@ import { getWeatherForSelectedCitiesForSeveralDays } from './weather/get.weather
 // import { getFavoriteCitiesWeather } from './weather/get.currentWeatherForFavCity'
 import postDeleteFavoriteCities from "./user/delete.deleteFavoriteCity";
 import { getWeatherForSeveralDaysFromFav } from './weather/get.weatherForSeveralDaysFromFav';
+import { getFavoriteCitiesWeather } from './weather/get.currentWeatherForFavCity';
 
 
 const router = express.Router()
@@ -52,7 +53,7 @@ router.get('/api/current_weather_for_selected_cities',getCurrentWeatherForSelect
 // get weather for several days selected cities
 router.get('/api/weather_for_selected_cities',getWeatherForSelectedCitiesForSeveralDays)
 // get weather for favorite cities
-// router.get('/api/getFavoriteCitiesWeather',getFavoriteCitiesWeather)
+router.get('/api/getFavoriteCitiesWeather',getFavoriteCitiesWeather)
 // get weather for several days from fav list cities
 router.get('/api/weather_several_days_fav',getWeatherForSeveralDaysFromFav);
 
