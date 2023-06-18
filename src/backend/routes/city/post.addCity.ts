@@ -15,15 +15,15 @@ export default {
             res,
             responseSuccessStatus: StatusCodes.CREATED,
             execute: async () => {
-                const { name, longitude, atitude, country } = req.body;
+                const { name, longitude, latitude, country } = req.body;
                 const parsedLongitude = String(longitude);
-                const parsedAtitude = String(atitude);
+                const parsedLatitude = String(latitude);
                 // Create a new city
                 const newCity = await prisma.city.create({
                     data: {
                         name,
                         longitude: parsedLongitude,
-                        atitude: parsedAtitude,
+                        latitude: parsedLatitude,
                         country,
                     },
                 });

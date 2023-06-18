@@ -23,6 +23,7 @@ export default {
                 const decodedToken = jwt.verify(token!, SECRET) as unknown as Jwt & JwtPayload
                 const {name, country} = req.body;
 
+                if (!name || !country) throw new Error("You must provide city name and country.");
                 const city = await prisma.city.findFirst({
                     where: {
                         name: {
@@ -39,19 +40,7 @@ export default {
                     where: { userId: decodedToken.id, cityId: city.id },
                 });
 
-                const updatedUser = await prisma.user.update({
-                    where: { id: decodedToken.id },
-                    // @ts-ignore
-                    data: { favorites: { disconnect: { id: city.id } } },
-                });
-
-                const updatedCity = await prisma.city.update({
-                    // @ts-ignore
-                    where: { id: city.id },
-                    data: { favorites: { disconnect: { id: decodedToken.id } } },
-                });
-
-                return { userId: updatedUser.id, cityId: updatedCity.id };
+                return { userId: decodedToken.id, cityId: city?.id };
             },
         }),
 } as TRoute;

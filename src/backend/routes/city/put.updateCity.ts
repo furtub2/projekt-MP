@@ -17,15 +17,17 @@ export default {
             messages: {},
             execute: async () => {
                 const { id } = req.params;
-                const { name, longitude, atitude, country } = req.body;
+                const { name, longitude, latitude, country } = req.body;
+                const parsedLongitude = String(longitude);
+                const parsedLatitude = String(latitude);
 
                 // Update the city
                 const updatedCity = await prisma.city.update({
                     where: { id: parseInt(id) },
                     data: {
                         name,
-                        longitude,
-                        atitude,
+                        latitude: parsedLatitude,
+                        longitude: parsedLongitude,
                         country,
                     },
                 });
