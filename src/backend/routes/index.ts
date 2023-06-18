@@ -12,6 +12,7 @@ import { getCurrentWeather } from './weather/get.currentWeather'
 import { getWeatherForDaysFromSelectedCity } from './weather/get.weatherForDays'
 import { getCurrentWeatherForSelectedCities } from './weather/get.currentWeatherForSelectedCities'
 import { getWeatherForSelectedCitiesForSeveralDays } from './weather/get.weatherForSelectedCitiesForSeveralDays'
+import { getFavoriteCitiesWeather } from './weather/get.currentWeatherForFavCity'
 import postDeleteFavoriteCities from "./user/delete.deleteFavoriteCity";
 
 
@@ -49,7 +50,8 @@ router.get('/api/weather_for_city',getWeatherForDaysFromSelectedCity)
 router.get('/api/current_weather_for_selected_cities',getCurrentWeatherForSelectedCities)
 // get weather for several days selected cities
 router.get('/api/weather_for_selected_cities',getWeatherForSelectedCitiesForSeveralDays)
-
+// get weather for favorite cities
+router.get('/api/getFavoriteCitiesWeather',getFavoriteCitiesWeather)
 
 
 export default router
