@@ -12,6 +12,7 @@ import { getCurrentWeather } from './weather/get.currentWeather'
 import { getWeatherForDaysFromSelectedCity } from './weather/get.weatherForDays'
 import { getCurrentWeatherForSelectedCities } from './weather/get.currentWeatherForSelectedCities'
 import { getWeatherForSelectedCitiesForSeveralDays } from './weather/get.weatherForSelectedCitiesForSeveralDays'
+import { getFavoriteCitiesWeather } from './weather/get.currentWeatherForFavCity'
 import postDeleteFavoriteCities from "./user/delete.deleteFavoriteCity";
 
 
